@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  influxdb:
+    image: influxdb:2.7.0
+    container_name: influxdb
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_vol:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana_vol:/var/lib/grafana
+      #configuration and datasources
+      - ./conf/grafana/:/etc/grafana/
+
+volumes:
+  influxdb_vol: {}
+  grafana_vol: {}
