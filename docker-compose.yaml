@@ -27,7 +27,7 @@ services:
       - influxdb
     volumes:
       - grafana_vol:/var/lib/grafana
-      #configuration and datasources
+      #configuration and datasources and dashboards
       - ./conf/grafana/:/etc/grafana/
 
 volumes:
