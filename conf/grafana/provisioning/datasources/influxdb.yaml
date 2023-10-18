@@ -4,11 +4,14 @@ datasources:
   - name: InfluxDB_v2_Flux
     type: influxdb
     access: proxy
-    url: http://localhost:8086
+    url: http://influxdb:8086
+    basicAuth: true
+    basicAuthUser: admin_idb
     jsonData:
       version: Flux
-      organization: organization
-      defaultBucket: bucket
+      organization: org_idb
+      defaultBucket: bucket_idb
       tlsSkipVerify: true
     secureJsonData:
-      token: token
+      basicAuthPassword: admin_idb
+      token: token_idb

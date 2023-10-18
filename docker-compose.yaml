@@ -4,6 +4,14 @@ services:
     image: influxdb:2.7.0
     container_name: influxdb
     restart: unless-stopped
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=admin_idb
+      - DOCKER_INFLUXDB_INIT_PASSWORD=admin_idb
+      - DOCKER_INFLUXDB_INIT_ORG=org_idb
+      - DOCKER_INFLUXDB_INIT_BUCKET=bucket_idb
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=token_idb
+      #- DOCKER_INFLUXDB_INIT_RETENTION
     ports:
       - "8086:8086"
     volumes:
